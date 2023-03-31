@@ -8,7 +8,7 @@ device_ip = ssh_modul.device_ip
 username = ssh_modul.username
 password = ssh_modul.password
 vl_id = str(input("Enter Vlan ID: "))
-vl_name = str(input("Enter Vlan name: "))
+vl_name = str(input("Vlan Nomini kirit: "))
 #v = "vlan"
 
 # Create an SSH client and connect to the switch
