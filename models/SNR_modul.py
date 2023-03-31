@@ -1,49 +1,49 @@
 import paramiko
-import ssh_modul
+import connecting.ssh_modul
 import time
 
 
 class show:
     def sh_ver():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
 
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh_client.connect(hostname=device_ip, username=username, password=password)
 
         ssh_session = ssh_client.invoke_shell()
-        ssh_session.send(f"enable\n")
-        ssh_session.send(f"terminal length 0\n")
-        ssh_session.send(f"show version\n")
+        ssh_session.send(f"enable\r")
+        ssh_session.send(f"terminal length 0\r")
+        ssh_session.send(f"show version\r")
         time.sleep(1)
         output = ssh_session.recv(65535).decode()
         print(output)
         return output
 
     def sh_run():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
 
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh_client.connect(hostname=device_ip, username=username, password=password)
 
         ssh_session = ssh_client.invoke_shell()
-        ssh_session.send(f"enable\n")
-        ssh_session.send(f"terminal length 0\n")
-        ssh_session.send(f"show run\n")
+        ssh_session.send(f"enable\r")
+        ssh_session.send(f"terminal length 0\r")
+        ssh_session.send(f"show run\r")
         time.sleep(1)
         output = ssh_session.recv(65535).decode()
         print(output)
         return output
 
     def sh_vlan():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
 
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -59,9 +59,9 @@ class show:
         return output
 
     def sh_mac_vl():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
 
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -77,9 +77,9 @@ class show:
         return output
 
     def sh_mac_interf():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
 
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -95,9 +95,9 @@ class show:
         return output
 
     def sh_log():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
 
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -113,9 +113,9 @@ class show:
         return output
 
     def sh_interf_stat():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
 
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -133,9 +133,9 @@ class show:
 
 class config:
     def c_vl():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
         vl_id = str(input("VLAN ID: "))
         vl_name = str(input("VLAN name:"))
 
@@ -145,20 +145,20 @@ class config:
 
         #jarayon
         ssh_session = ssh_client.invoke_shell()
-        ssh_session.send(f"enable\n")
-        ssh_session.send(f"config terminal\n")
-        ssh_session.send(f"vlan {vl_id}\n")
-        ssh_session.send(f"name {vl_name}\n")
-        ssh_session.send(f"end\n")
+        ssh_session.send(f"enable\r")
+        ssh_session.send(f"config terminal\r")
+        ssh_session.send(f"vlan {vl_id}\r")
+        ssh_session.send(f"name {vl_name}\r")
+        ssh_session.send(f"end\r")
         time.sleep(1)
         output = ssh_session.recv(65535).decode()
         print(output)
         return output
 
     def d_vl():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
         vl_id = str(input("VLAN ID: "))
 
         ssh_client = paramiko.SSHClient()
@@ -177,9 +177,9 @@ class config:
         return output
 
     def w_int_acc():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
         inter_id = str(input("VLAN ID: "))
 
         ssh_client = paramiko.SSHClient()
@@ -198,9 +198,9 @@ class config:
         return output
 
     def w_int_trk():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
         inter_id = str(input("VLAN ID: "))
 
         ssh_client = paramiko.SSHClient()
@@ -219,9 +219,9 @@ class config:
         return output
 
     def w_int_ac_vl():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
         inter_id = str(input("VLAN ID: "))
         vl_id = str(input("VLAN ID: "))
 
@@ -241,9 +241,9 @@ class config:
         return output
 
     def w_int_trk_vl():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
         inter_id = str(input("VLAN ID: "))
         vl_id = str(input("VLAN ID: "))
 
@@ -263,9 +263,9 @@ class config:
         return output
 
     def w_d_int_trk_vl():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
         inter_id = str(input("VLAN ID: "))
         vl_id = str(input("VLAN ID: "))
 
@@ -285,9 +285,9 @@ class config:
         return output
 
     def w_d_int_ac_vl():
-        device_ip = ssh_modul.device_ip
-        username = ssh_modul.username
-        password = ssh_modul.password
+        device_ip = connecting.ssh_modul.device_ip
+        username = connecting.ssh_modul.username
+        password = connecting.ssh_modul.password
         inter_id = str(input("VLAN ID: "))
 
         ssh_client = paramiko.SSHClient()

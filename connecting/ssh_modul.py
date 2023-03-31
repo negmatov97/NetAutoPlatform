@@ -10,9 +10,9 @@ conn = psycopg2.connect(
 )
 
 # Get the device IP address and user credentials from user input
-device_ip = input("Enter device IP address: ")
-username = input("Enter username: ")
-password = input("Enter password: ")
+device_ip = input("Qurilmaning IP mazilini kiriting: ")
+username = input("Username kiriting: ")
+password = input("Password kiriting: ")
 
 # Query the device table to check if the IP address exists
 cursor = conn.cursor()
@@ -20,7 +20,7 @@ cursor.execute("SELECT d_ip_add FROM devices WHERE d_ip_add=%s", (device_ip,))
 result = cursor.fetchone()
 
 if result is None:
-    print("Device IP address not found in database.")
+    print("Kechirasiz kiritilgan IP manzil ma'lumotlar bazasida mavjud emas.")
 else:
     # Query the s_adm table to check if the username and password match
     cursor.execute("SELECT s_user, s_pass FROM s_adm WHERE s_user=%s AND s_pass=%s", (username, password))
@@ -35,7 +35,7 @@ else:
     r_result = cursor.fetchone()
 
     if s_result is None and u_result is None and r_result is None:
-        print("Invalid username or password.")
+        print("Noto'g'ri username yoki password")
     else:
         # Connect to the device using SSH
         ssh = paramiko.SSHClient()
