@@ -9,4 +9,4 @@ if "231" in command:
 elif "232" in command:
     models.SNR_modul.config.c_vl()
 else:
-    "Xatolik amalga oshirildi"
+    "Qurilma modellari bilan xatolik yuz berdi!!!"
