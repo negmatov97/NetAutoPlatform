@@ -3,10 +3,12 @@ import models.TL_modul
 
 command = models.TL_modul.show.sh_vlan()
 print(command)
-
+def cr_vl():
 if "231" in command:
-    models.TL_modul.config.c_vl()
+models.TL_modul.config.c_vl()
 elif "232" in command:
-    models.SNR_modul.config.c_vl()
+models.SNR_modul.config.c_vl()
 else:
     "Qurilma modellari bilan xatolik yuz berdi!!!"
+
+print(cr_vl())
